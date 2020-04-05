@@ -27,6 +27,7 @@ RUN set -xe \
         php7-session \
         php7-sqlite3 \
         php7-xml \
+        php7-xmlwriter \
         php7-zip \
         php7-zlib \
 	mysql-client \
