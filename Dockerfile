@@ -10,6 +10,7 @@ RUN set -xe \
         php7-fpm \
         php7-common \
         php7-curl \
+        php7-ctype \
         php7-fileinfo \
         php7-json \
         php7-openssl \
