@@ -37,7 +37,8 @@ RUN set -xe \
 
 ADD nginx.conf php-fpm.conf /
 RUN mv /nginx.conf /etc/nginx/nginx.conf && \
-    cat /php-fpm.conf >> /etc/php7/php-fpm.d/www.conf
+    cat /php-fpm.conf >> /etc/php7/php-fpm.d/www.conf && \
+    echo "log_errors_max_len = 1048576" >> /etc/php7/php.ini
 
 WORKDIR /var/www
 
