@@ -11,6 +11,7 @@ RUN set -xe \
         php7-common \
         php7-curl \
         php7-ctype \
+        php7-dom \
         php7-fileinfo \
         php7-json \
         php7-openssl \
