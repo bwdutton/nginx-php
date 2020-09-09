@@ -1,9 +1,14 @@
 FROM alpine:3
 
-RUN set -xe \
-    && apk add --no-cache \
+RUN set -xe && \
+    apk add gnu-libiconv --update-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/community/ --allow-untrusted \
+    && \
+    apk -U upgrade \
+    && \
+    apk add --update \
         ca-certificates \
 	composer \
+	gnu-libiconv \
         gzip \
         nginx \
         openssl \
@@ -13,6 +18,7 @@ RUN set -xe \
         php7-ctype \
         php7-dom \
         php7-fileinfo \
+        php7-iconv \
         php7-json \
         php7-openssl \
         php7-mbstring \
@@ -34,7 +40,11 @@ RUN set -xe \
         php7-zlib \
 	mysql-client \
 	postgresql-client \
-        tar
+        tar \
+    && \
+    rm -rf /var/cache/apk/*
+
+ENV LD_PRELOAD /usr/lib/preloadable_libiconv.so php
 
 ADD nginx.conf php-fpm.conf /
 RUN mv /nginx.conf /etc/nginx/nginx.conf && \
