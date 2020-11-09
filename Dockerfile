@@ -42,6 +42,10 @@ RUN set -xe && \
 	postgresql-client \
         tar \
     && \
+    pecl install redis \
+    && \
+    echo 'extension=redis.so' > /etc/php7/conf.d/02_redis.ini \
+    && \
     rm -rf /var/cache/apk/*
 
 ENV LD_PRELOAD /usr/lib/preloadable_libiconv.so php
