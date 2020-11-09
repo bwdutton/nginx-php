@@ -42,9 +42,13 @@ RUN set -xe && \
 	postgresql-client \
         tar \
     && \
+    apk add --update --virtual .build-deps gcc g++ musl-dev make autoconf php7-dev \
+    && \
     pecl install redis \
     && \
     echo 'extension=redis.so' > /etc/php7/conf.d/02_redis.ini \
+    && \
+    apk del .build-deps \
     && \
     rm -rf /var/cache/apk/*
 
