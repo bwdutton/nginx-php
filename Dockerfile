@@ -7,8 +7,8 @@ RUN set -xe && \
     && \
     apk add --update \
         ca-certificates \
-	composer \
-	gnu-libiconv \
+        composer \
+        gnu-libiconv \
         gzip \
         nginx \
         openssl \
@@ -33,13 +33,14 @@ RUN set -xe && \
         php7-phar \
         php7-pgsql \
         php7-session \
+        php7-simplexml \
         php7-sqlite3 \
         php7-xml \
         php7-xmlwriter \
         php7-zip \
         php7-zlib \
-	mysql-client \
-	postgresql-client \
+        mysql-client \
+        postgresql-client \
         tar \
     && \
     apk add --update --virtual .build-deps gcc g++ musl-dev make autoconf php7-dev \
