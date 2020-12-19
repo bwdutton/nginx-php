@@ -12,12 +12,13 @@ RUN set -xe && \
         gzip \
         nginx \
         openssl \
-        php7-fpm \
         php7-common \
         php7-curl \
         php7-ctype \
         php7-dom \
         php7-fileinfo \
+        php7-fpm \
+        php7-gd \
         php7-iconv \
         php7-json \
         php7-openssl \
