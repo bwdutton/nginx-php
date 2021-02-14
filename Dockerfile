@@ -58,8 +58,6 @@ RUN mv /nginx.conf /etc/nginx/nginx.conf && \
 
 WORKDIR /var/www
 
-VOLUME /var/www
-
 EXPOSE 80
 
 CMD php-fpm7 && nginx -g 'daemon off;'
