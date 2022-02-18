@@ -12,41 +12,41 @@ RUN set -xe && \
         gzip \
         nginx \
         openssl \
-        php7-common \
-        php7-curl \
-        php7-ctype \
-        php7-dom \
-        php7-fileinfo \
-        php7-fpm \
-        php7-gd \
-        php7-iconv \
-        php7-json \
-        php7-openssl \
-        php7-mbstring \
-        php7-mysqli \
-        php7-mysqlnd \
-        php7-opcache \
-        php7-pdo \
-        php7-pdo_mysql \
-        php7-pdo_pgsql \
-        php7-pdo_sqlite \
-        php7-pear \
-        php7-phar \
-        php7-pgsql \
-        php7-session \
-        php7-simplexml \
-        php7-sqlite3 \
-        php7-tokenizer \
-        php7-xml \
-        php7-xmlreader \
-        php7-xmlwriter \
-        php7-zip \
-        php7-zlib \
+        php8-common \
+        php8-curl \
+        php8-ctype \
+        php8-dom \
+        php8-fileinfo \
+        php8-fpm \
+        php8-gd \
+        php8-iconv \
+        php8-json \
+        php8-openssl \
+        php8-mbstring \
+        php8-mysqli \
+        php8-mysqlnd \
+        php8-opcache \
+        php8-pdo \
+        php8-pdo_mysql \
+        php8-pdo_pgsql \
+        php8-pdo_sqlite \
+        php8-pear \
+        php8-phar \
+        php8-pgsql \
+        php8-session \
+        php8-simplexml \
+        php8-sqlite3 \
+        php8-tokenizer \
+        php8-xml \
+        php8-xmlreader \
+        php8-xmlwriter \
+        php8-zip \
+        php8-zlib \
         mysql-client \
         postgresql-client \
         tar \
     && \
-    apk add php7-pecl-redis --update-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/community/ --allow-untrusted \
+    apk add php8-pecl-redis --update-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/community/ --allow-untrusted \
     && \
     rm -rf /var/cache/apk/*
 
@@ -54,11 +54,12 @@ ENV LD_PRELOAD /usr/lib/preloadable_libiconv.so php
 
 ADD nginx.conf php-fpm.conf /
 RUN mv /nginx.conf /etc/nginx/nginx.conf && \
-    cat /php-fpm.conf >> /etc/php7/php-fpm.d/www.conf && \
-    echo "log_errors_max_len = 1048576" >> /etc/php7/php.ini
+    cat /php-fpm.conf >> /etc/php8/php-fpm.d/www.conf && \
+    echo "log_errors_max_len = 1048576" >> /etc/php8/php.ini && \
+    php8 -v
 
 WORKDIR /var/www
 
 EXPOSE 80
 
-CMD php-fpm7 && nginx -g 'daemon off;'
+CMD php-fpm8 && nginx -g 'daemon off;'
